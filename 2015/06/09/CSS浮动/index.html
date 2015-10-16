@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS浮动 | 记录&amp;分享</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近被浮动小小的坑了一下，折腾了挺久的父元素高度还没撑开。
+浮动Float是CSS样式中的定位属性，用于设置标签对象(如：&amp;lt;div&amp;gt;标签盒子、&amp;lt;span&amp;gt;标签、&amp;lt;a&amp;gt;标签、&amp;lt;em&amp;gt;标签等html标签)的浮动布局，浮动也就是我们所说标签对象浮动居左靠左(float:left)和浮动居右靠右(float:right)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS浮动">
+<meta property="og:url" content="http://zhujun24.github.io/2015/06/09/CSS浮动/index.html">
+<meta property="og:site_name" content="记录&分享">
+<meta property="og:description" content="最近被浮动小小的坑了一下，折腾了挺久的父元素高度还没撑开。
+浮动Float是CSS样式中的定位属性，用于设置标签对象(如：&amp;lt;div&amp;gt;标签盒子、&amp;lt;span&amp;gt;标签、&amp;lt;a&amp;gt;标签、&amp;lt;em&amp;gt;标签等html标签)的浮动布局，浮动也就是我们所说标签对象浮动居左靠左(float:left)和浮动居右靠右(float:right)">
+<meta property="og:image" content="http://zhujun24.github.io/img/float_1.gif">
+<meta property="og:image" content="http://zhujun24.github.io/img/float_2.gif">
+<meta property="og:image" content="http://zhujun24.github.io/img/float_3.gif">
+<meta property="og:image" content="http://zhujun24.github.io/img/float_4.gif">
+<meta property="og:image" content="http://zhujun24.github.io/img/float_5.gif">
+<meta property="og:image" content="http://zhujun24.github.io/img/float_6.gif">
+<meta property="og:image" content="http://zhujun24.github.io/img/float_7.gif">
+<meta property="og:updated_time" content="2015-06-09T13:31:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS浮动">
+<meta name="twitter:description" content="最近被浮动小小的坑了一下，折腾了挺久的父元素高度还没撑开。
+浮动Float是CSS样式中的定位属性，用于设置标签对象(如：&amp;lt;div&amp;gt;标签盒子、&amp;lt;span&amp;gt;标签、&amp;lt;a&amp;gt;标签、&amp;lt;em&amp;gt;标签等html标签)的浮动布局，浮动也就是我们所说标签对象浮动居左靠左(float:left)和浮动居右靠右(float:right)">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8bdb331f562eaf36d2110947341db92d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">记录&amp;分享</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">—By zhujun24</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS浮动" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/09/CSS浮动/" class="article-date">
+  <time datetime="2015-06-09T03:07:27.000Z" itemprop="datePublished">六月 9 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS浮动
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近被浮动小小的坑了一下，折腾了挺久的父元素高度还没撑开。</p>
+<p>浮动Float是CSS样式中的定位属性，用于设置标签对象(如：&lt;div&gt;标签盒子、&lt;span&gt;标签、&lt;a&gt;标签、&lt;em&gt;标签等html标签)的浮动布局，浮动也就是我们所说标签对象浮动居左靠左(float:left)和浮动居右靠右(float:right)<br><a id="more"></a></p>
+<h4 id="语法">语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">float</span>:<span class="value"> none | left | right</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="参数">参数</h4><blockquote>
+<ul>
+<li>none: 对象不浮动</li>
+<li>left: 对象浮在左边</li>
+<li>right: 对象浮在右边</li>
+<li>inherit: 对象应该从父元素继承float属性的值</li>
+</ul>
+</blockquote>
+<p>当把框1向右浮动时，它脱离文档流并且向右移动，直到它的右边缘碰到包含框的右边缘(来自W3School):<br><img src="/img/float_1.gif" alt="简单浮动"><br>当框1向左浮动时，它脱离文档流并且向左移动，直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空间，实际上覆盖住了框2，使框2从视图中消失。如果把所有三个框都向左移动，那么框1向左浮动直到碰到包含框，另外两个框向左浮动直到碰到前一个浮动框。<br><img src="/img/float_2.gif" alt="简单浮动"><br>然而自己尝试的时候，结果并不是这样的，框1向左浮动时，IE6/7下是这样的：<br><img src="/img/float_3.gif" alt="IE6/7下的浮动"><br>框1向左浮动时，Chrome和FF下是这样的：<br><img src="/img/float_4.gif" alt="Chrome和FF下的浮动"><br>如下图所示，如果包含框太窄，无法容纳水平排列的三个浮动元素，那么其它浮动块向下移动，直到有足够的空间。如果浮动元素的高度不同，那么当它们向下移动时可能被其它浮动元素“卡住”:<br><img src="/img/float_5.gif" alt="浮动"><br>详细的可以参见W3School的<a href="http://www.w3school.com.cn/css/css_positioning_floating.asp" target="_blank" rel="external">CSS浮动</a></p>
+<h4 id="清除浮动">清除浮动</h4><p>在非IE6/7浏览器下，当容器的高度没有设置或者设置为auto，且容器的内容中有浮动(float为left或right)的元素，在这种情况下，容器的高度不能自动撑开以适应内容的高度，使得内容溢出到容器外面而影响(甚至破坏)布局的现象。这个现象叫浮动溢出，为了防止这个现象的出现而进行的CSS处理，就叫CSS清除浮动。比如说下面这种情况:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div"</span>&gt;</span>div1<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div"</span>&gt;</span>div2<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div"</span>&gt;</span>div3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.parent</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">400px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">5px</span> solid red</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.div</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value">pink</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">2px</span> solid black</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value">left</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>在Chrome、FF和IE8+下是这样的(父元素有红色的边框，高度未撑开，Chrome里查看高度的确为0):<br><img src="/img/float_6.gif" alt="Chrome、FF和IE8+下的浮动"><br>在IE6/7下是这样的(没啥，就是好的):<br><img src="/img/float_7.gif" alt="IE6/7下的浮动"></p>
+<h5 id="方法一_父级定义height">方法一 父级定义height</h5><p>是不是感觉这个方法很low啊！因为父元素撑不开，加个高度不就撑开了嘛，多么简单，的确这个可以解决部分问题，可要是遇到高度不固定的怎么办？所以这种残暴的方法只适合高度固定的布局，须要给出精确的高度才能使用</p>
+<h5 id="方法二_浮动元素结尾处加空标签，并设置clear:both">方法二 浮动元素结尾处加空标签，并设置clear:both</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div"</span>&gt;</span>div1<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div"</span>&gt;</span>div2<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div"</span>&gt;</span>div3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"clear"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>CSS追加<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.clear</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">clear</span>:<span class="value">both</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>该方法的原理是添加一个空div，利用CSS提高的clear:both清除浮动，让父级div能自动获取到高度，优点是简单、代码少、兼容性好，缺点是增加了没有意义的标签，与标签语义化相悖。所以不推荐使用该方法，但此方法是以前主要使用的一种清除浮动方法。</p>
+<h5 id="方法三_父级定义伪类:after和zoom">方法三 父级定义伪类:after和zoom</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"parent clearfloat"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div"</span>&gt;</span>div1<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div"</span>&gt;</span>div2<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div"</span>&gt;</span>div3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>CSS追加<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">.clearfloat</span>:<span class="value">after&#123;</span><br><span class="line">    visibility: hidden</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">display</span>:<span class="value"> block</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">clear</span>:<span class="value"> both</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">content</span>:<span class="value"> <span class="string">""</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class">.clearfloat</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">zoom</span>:<span class="value"> <span class="number">1</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>该方法的原理是IE8以上和非IE浏览器才支持:after，原理和方法二有点类似，zoom(IE专有属性)可解决IE6/7浮动问题。缺点是代码稍多，不好理解。优点同方法二，建议使用</p>
+<h5 id="方法四_父级定义overflow:hidden">方法四 父级定义overflow:hidden</h5><p>该方法的原理是必须定义width或zoom:1，同时不能定义height，使用overflow:hidden时，浏览器会自动检查浮动区域的高度，优点是代码少，也通吃各种浏览器，缺点是和position配合使用时，超出的尺寸的会被隐藏</p>
+<h5 id="方法五_父级定义overflow:auto">方法五 父级定义overflow:auto</h5><p>该方法的原理是必须定义width或zoom:1，同时不能定义height，使用overflow:auto时，浏览器会自动检查浮动区域的高度，优点是代码少，也通吃各种浏览器，缺点是内部宽高超过父级div时，会出现滚动条</p>
+<h5 id="方法六_父级也一起浮动">方法六 父级也一起浮动</h5><p>该逗比方法的原理是所有元素一起浮动，就变成了一个整体，怎么有种同流合污的感觉！没有优点，缺点是你有了新的问题</p>
+<h5 id="方法七_父级定义display:table">方法七 父级定义display:table</h5><p>该方法的原理是将div的display属性变成表格，残暴的解决了问题，但是可能会产生未知的问题，不推荐使用</p>
+<h4 id="小结">小结</h4><p>推荐使用方法三——父级定义伪类:after和zoom，优点是浏览器支持好、不容易出现怪问题(目前大型网站都有使用，如腾迅，网易，新浪等)，缺点是略微复杂，不过写好了直接用也很方便。</p>
+<p>CSS水也深！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://zhujun24.github.io/2015/06/09/CSS浮动/" data-id="cifthorbr001wjgcj4khg23j4" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://zhujun24.github.io/2015/06/09/CSS浮动/#disqus_thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/">Front-End</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/02/CSS3-Transition值为Auto的情况/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          CSS3 Transition值为Auto的情况
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/03/CSS优先级/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">CSS优先级</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/08/02/Git&Github 团队协作/">Git&amp;Github 团队协作</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/02/CSS3-Transition值为Auto的情况/">CSS3 Transition值为Auto的情况</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/09/CSS浮动/">CSS浮动</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/03/CSS优先级/">CSS优先级</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/03/2015年实习生面试小记/">2015年实习生面试小记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Work/">Work</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conclusion/">Conclusion</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/">Front-End</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-Slim/">PHP Slim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/about" target="_blank">关于</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.hfutfind.com/" target="_blank">流光易抛的博客</a>
+          </li>
+        
+          <li>
+            <a href="http://timehub.cn/" target="_blank">小径分岔的花园</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=1&ptype=1&speed=0&skin=2&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=3199138135&verifier=7c027f17&dpc=1"></iframe>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 zhujun24<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+      <br>
+      Weibo:&nbsp;<a href="http://weibo.com/zhujun87654321" target="_blank">低位</a>
+      <br>
+      Github:&nbsp;<a href="https://github.com/zhujun24" target="_blank">zhujun24</a>
+      <br>
+      Email:&nbsp;<a href="mailto:zhujun87654321@gmail.com">zhujun87654321@gmail.com</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'zhujunhexoblog';
+  
+  var disqus_url = 'http://zhujun24.github.io/2015/06/09/CSS浮动/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+    <a href="https://github.com/zhujun24"><img style="position: absolute; top: 0; right: 0; border: 0;z-index: 1;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  </div>
+</body>
+</html>

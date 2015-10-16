@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>《高性能JavaScript》 | 记录&amp;分享</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这是一本关于JavaScript性能的书。
+###第一章 加载和执行关于脚本位置，大家应该都知道，将JavaScript脚本放在底部123    &amp;lt;script&amp;gt;JavaScript Code&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;
+这也是雅虎特别小组提出的优化JavaScript的首要规则。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《高性能JavaScript》">
+<meta property="og:url" content="http://zhujun24.github.io/2014/12/28/《高性能JavaScript》/index.html">
+<meta property="og:site_name" content="记录&分享">
+<meta property="og:description" content="这是一本关于JavaScript性能的书。
+###第一章 加载和执行关于脚本位置，大家应该都知道，将JavaScript脚本放在底部123    &amp;lt;script&amp;gt;JavaScript Code&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;
+这也是雅虎特别小组提出的优化JavaScript的首要规则。">
+<meta property="og:image" content="http://zhujun24.github.io/img/stringadd.jpg">
+<meta property="og:updated_time" content="2015-06-09T10:57:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《高性能JavaScript》">
+<meta name="twitter:description" content="这是一本关于JavaScript性能的书。
+###第一章 加载和执行关于脚本位置，大家应该都知道，将JavaScript脚本放在底部123    &amp;lt;script&amp;gt;JavaScript Code&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;
+这也是雅虎特别小组提出的优化JavaScript的首要规则。">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8bdb331f562eaf36d2110947341db92d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">记录&amp;分享</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">—By zhujun24</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-《高性能JavaScript》" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/28/《高性能JavaScript》/" class="article-date">
+  <time datetime="2014-12-28T05:01:19.000Z" itemprop="datePublished">十二月 28 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《高性能JavaScript》
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是一本关于JavaScript性能的书。</p>
+<p>###第一章 加载和执行<br>关于脚本位置，大家应该都知道，将JavaScript脚本放在底部<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="undefined">JavaScript Code</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这也是雅虎特别小组提出的优化JavaScript的首要规则。<br><a id="more"></a><br>复杂的Web应用可能需要依赖数个JavaScript文件，可以把多个JavaScript文件合并成一个，这样只需要引用一个<code>&lt;script&gt;</code>标签，就可以减少性消耗。文件合并的工作可以交给打包工具。</p>
+<p>更高端点的就是无阻塞的脚本，推荐的无阻塞模式是先添加动态加载所需的代码，然后加载初始化页面所需的剩下的代码。因为第一部分的代码尽量精简，甚至只可能只包含<strong>loadScript()</strong>函数，它下载和执行都是极快的，对页面基本无影响，一旦初始代码就位，就用它来加载剩余的JavaScript文件，例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"loader.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="actionscript"></span><br><span class="line">    loadScript(<span class="string">"the-rest.js"</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        Applocation.init();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>把这段代码放到<code>&lt;/body&gt;</code>标签之前，大约有以下几个好处:</p>
+<ol>
+<li>####这样做确保了JavaScript执行的过程中不会阻碍页面其他内容的显示</li>
+<li>####当第二个JavaScript文件下载完成时，应用所需的所有DOM结构已经创建完毕，并做好了交互的准备，从而避免了类似<strong>window.onload</strong>事件来检测页面是否准备好。</li>
+</ol>
+<p>还可以把<strong>loadScript()</strong>函数直接嵌入页面，从而避免多产生一次HTTP请求(<strong>loader.js</strong>)</p>
+<p>一旦页面初始化所需的代码完成下载，你就可以继续自由的使用<strong>loadScript()</strong>去加载页面其他的功能所需的脚本。了解更多可以搜索 <strong>YUI3的yui-min.js</strong> <strong>Lazyload类库</strong> <strong>LABjs</strong></p>
+<p>###第二章 数据访问<br>每一种数据存储的位置都有不同的读写消耗，大多数情况下，从一个直接量和一个局部变量中存取数据的性能差异是微不足道的。访问数组元素的对象成员的代价则高一些，具体高出多少则取决于浏览器。</p>
+<p>函数中读写局部变量总是最快的，而读写全局变量通常是最慢的。因为全局变量总是存在于运行期上下文作用域链的最末端，因此也是最远的。</p>
+<p>属性或方法在原型链中的位置越深，访问它的速度也越慢。</p>
+<p>通常来说，把常用的对象成员、数组元素、跨域变量保存在局部变量中来改善JavaScript性能</p>
+<p>###第三章 DOM编程</p>
+<p>####天生就慢<br>简单理解，两个相互独立的功能只要通过接口彼此连接，就会产生消耗。有个贴切的比喻 ，把DOM和JavaScript(这里只ECMAScript)各自比喻成一个岛屿，它们之间用收费桥梁来连接，因此访问DOM的次数越多，费用也就越高，显而易见的是要减少“过桥”的次数，努力呆在ECMAScript岛上。</p>
+<p>访问DOM元素是有代价的，修改元素的代价更昂贵，因为它会导致浏览器重新计算页面的几何变化，重绘页面。举个简单的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; <span class="number">10000</span>; count++) &#123;</span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'here'</span>).innerHTML += <span class="string">"a"</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个函数循环修改页面元素的内容，但有个严重的问题在于每次循环迭代，该元素都会访问两次，一次读取<code>innerHTML</code>属性值，一次重写它，再看优化后的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop2</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; <span class="number">10000</span>; count++) &#123;</span><br><span class="line">        content += <span class="string">"a"</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'here'</span>).innerHTML += content;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所有浏览器中，优化后的版本都运行的更快，结果充分表明，访问DOM的次数越多，代码的运行速度越慢。因此，一般的经验法则是：减少访问DOM的次数，把运算尽量留在ECMAScript这一端处理。</p>
+<p>修改页面区域的最佳方案是用非标准但支持良好的<code>innerHTML</code>属性呢还是只用类似<code>document.createElement()</code>的原生DOM方法？若不考虑Web标准，两者性能相差无几，但是在除开最新版本的WebKit内核(Chrome和Safari)之外的所有浏览器中，<code>innerHTML</code>会更快一些，所以还是试用<code>innerHTML</code>吧！</p>
+<p>####HTML集合<br>HTML集合是包含了DOM节点引用的<strong>类数组对象</strong>，通常有以下三种：</p>
+<ol>
+<li>####<code>document.getElementsByTagName();</code></li>
+<li>####<code>document.getElementsByName();</code></li>
+<li>####<code>document.getElementsByClassName();</code></li>
+</ol>
+<p>不要问为什么<code>document.getElementById()</code>不是类数组对象。</p>
+<p>还有另外四个不常用的：</p>
+<ol>
+<li>####<code>document.images</code> 页面中所有<code>img</code>元素</li>
+<li>####<code>document.links</code> 页面中所有<code>a</code>元素</li>
+<li>####<code>document.forms</code> 页面中所有表单元素</li>
+<li>####<code>document.forms[0].elements;</code> 页面中第一个表单的所有字段</li>
+</ol>
+<p>以上方法和属性的返回值为HTML集合对象，这是个类似数组的列表。它们并不是真正的数组(因为没有push()和slice()之类的方法)，但提供了一个类似数组中的<code>length</code>属性，并且还能像数组一样以数字索引的方式访问列表中的元素。</p>
+<p>下面这个例子是把页面中的<code>div</code>元素数量翻倍吗？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> allDivs = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; allDivs.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(<span class="built_in">document</span>.createElement(<span class="string">'div'</span>));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>呵呵！好像不是，这是一个意外的死循环，因为循环的退出条件<code>allDivs.length</code>在每次迭代时都会增加，它反映出的是底层文档的当前状态。事实上，HTML集合一直与文档保持着连接，每次你需要最新的信息时，都会重复执行查询的过程，哪怕只是获取集合里元素的个数也是如此，这正是低效之源。</p>
+<p>在循环的条件控制语句中读取数组的<code>length</code>属性是不推荐的做法，读取一个集合的<code>length</code>属性要比普通数组的<code>length</code>属性要慢得多，因为每次都要重新查询。</p>
+<p>####选择器API<br>对DOM中的特定元素操作时，通常使用<code>document.getElementsByTagName()</code>和<code>document.getElementsById()</code>，有时为了得到需要的元素列表，还需要组合调用它们并遍历返回的节点，但这种繁密的过程效率低下。最新的浏览器提供了<code>querySelector()</code>和<code>querySelectorAll()</code>的原生DOM方法(目前 IE8及Firefox/Chrome/Safari/Opera 的最新版已经支持它们)，这种方式自然比使用JavaScript和DOM来遍历查找元素要快的多。考虑如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elements = <span class="built_in">document</span>.querySelectorAll(<span class="string">'#parent a'</span>);</span><br></pre></td></tr></table></figure></p>
+<p><code>elements</code>的值包含一个引用列表，指向位于<code>id=&quot;parent&quot;</code>的元素之中的所有<code>a</code>元素，<code>querySelectorAll()</code>方法是用CSS选择器作为参数并返回一个NodeList——包含着匹配节点的类数组对象，这个方法不会返回HTML集合，因此返回的节点不会对应实时的文档结构，因此这也避免了之前讨论的HTML集合引起的性能(和潜在逻辑)问题，如果不使用<code>querySelectorAll()</code>，为了达到相同的目的，应该这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elements = <span class="built_in">document</span>.getElementById(<span class="string">'parent'</span>).getElementsByTagName(<span class="string">'a'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这种情况下<code>elements</code>会是一个HTML集合，所以你还要把他们拷贝到数组中，才能得到与<code>querySelectorAll()</code>返回值类似的静态列表(IE8会alert出StaticNodeList)。</p>
+<p>因此如果要处理大量组合查询，使用<code>querySelectorAll()</code>的话会更有效率。</p>
+<p>####重绘和重排<br>当浏览器下载完所有页面 HTML 标记，JavaScript，CSS，图片之后，它解析文件并创建两个内部数据结构：</p>
+<ol>
+<li>####DOM树 表示页面结构</li>
+<li>####渲染树 表示 DOM 节点如何显示</li>
+</ol>
+<p>渲染树中为每个需要显示的 DOM 树节点存放至少一个节点(隐藏 DOM 元素在渲染树中没有对应节点)。渲染树上的节点称为“框”或者“盒”，符合 CSS 模型的定义，将页面元素看作一个具有填充、边距、边框和位置的盒。一旦 DOM 树和渲染树构造完毕，浏览器就可以显示(绘制)页面上的元素了。</p>
+<p>当 DOM 改变影响到元素的几何属性(宽和高)——例如改变了边框宽度或在段落中添加文字，将发生一系列后续动作——浏览器需要重新计算元素的几何属性，而且其他元素的几何属性和位置也会因此改变受到影响。浏览器使渲染树上受到影响的部分失效，然后重构渲染树。这个过程被称作重排版。重排版完成时，浏览器在一个重绘进程中重新绘制屏幕上受影响的部分。</p>
+<p>不是所有的 DOM 改变都会影响几何属性。例如，改变一个元素的背景颜色不会影响它的宽度或高度。在这种情况下，只需要重绘(不需要重排版)，因为元素的布局没有改变。</p>
+<p>重绘和重排版是负担很重的操作，可能导致网页应用的用户界面失去相应。所以，十分有必要尽可能减少这类事情的发生。</p>
+<p>####重排何时发生</p>
+<ol>
+<li>####添加或删除可见的 DOM 元素</li>
+<li>####元素位置改变</li>
+<li>####元素尺寸改变(因为边距，填充，边框宽度，宽度，高度等属性改变)</li>
+<li>####内容改变，例如，文本改变或图片被另一个不同尺寸的所替代</li>
+<li>####最初的页面渲染</li>
+<li>####浏览器窗口改变尺寸</li>
+</ol>
+<p>重绘和重排可能代价非常昂贵，因此一个好的提高程序影响速度的策略就是减少此类操作的发生。为了减少发生次数，应该合并多次对DOM和样式的修改，然后一次处理掉。改变样式可以使用<code>cssText</code>属性实现。</p>
+<p>###第四章 算法和流程控制<br>对大多数编程语言而言，代码执行时间大部分消耗在循环中在一系列编程模式中，循环是最常用的模式之一，因此也是提高性能必须关注的地区之一。</p>
+<p>####四种循环类型</p>
+<ol>
+<li>####标准for循环</li>
+<li>####while循环</li>
+<li>####do-while循环</li>
+<li>####for-in循环<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for循环</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; <span class="number">10</span>; count++) &#123;</span><br><span class="line">    <span class="comment">//循环主体</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//while循环</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (count &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="comment">//循环主体</span></span><br><span class="line">    count++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//do-while循环</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="comment">//循环主体</span></span><br><span class="line">&#125; <span class="keyword">while</span> (count++ <span class="xml"><span class="tag">&lt; <span class="attribute">10</span>);</span><br><span class="line"></span><br><span class="line">//<span class="attribute">for-in</span>循环</span><br><span class="line"><span class="attribute">for</span> (<span class="attribute">var</span> <span class="attribute">prop</span> <span class="attribute">in</span> <span class="attribute">object</span>) &#123;</span><br><span class="line">    //循环主体</span><br><span class="line">&#125;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>不断引发循环性能争论的源头是循环类型的选择。在JavaScript提供的四种循环类型中，只有<code>for-in</code>循环比其他三种明显要慢。因此除非你的确需要迭代一个属性数量未知的对象，否则应避免使用<code>for-in</code>循环。</p>
+<p>####减少迭代的工作量<br>不言而喻，如果一次循环迭代需要较长时间来执行，那么多次循环将需要更长时间。限制在循环体内进行耗时操作的数量是一个加快循环的好方法。</p>
+<p>####减少迭代次数</p>
+<p>即使是循环体中最快的代码累计迭代上千次也会慢下来，因此减少迭代次数能获得更加显著的性能提升。最广为人知的限制循环迭代次数的模式称作<strong>达夫设备</strong>。</p>
+<p><strong>达夫设备</strong>是一个循环体展开技术，在一次迭代中实际上执行了多次迭代操作。Jeff Greenberg 被认为是将达夫循环从原始的 C 实现移植到 JavaScript 中的第一人。一个典型的实现如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//credit: Jeff Greenberg</span></span><br><span class="line"><span class="keyword">var</span> iterations = <span class="built_in">Math</span>.floor(items.length / <span class="number">8</span>),</span><br><span class="line">    startAt = items.length % <span class="number">8</span>,</span><br><span class="line">    i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span>(startAt)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: process(items[i++]);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>: process(items[i++]);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span>: process(items[i++]);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>: process(items[i++]);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>: process(items[i++]);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: process(items[i++]);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: process(items[i++]);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: process(items[i++]);</span><br><span class="line">    &#125;</span><br><span class="line">    startAt = <span class="number">0</span>;</span><br><span class="line">&#125; <span class="keyword">while</span> (--iterations);</span><br></pre></td></tr></table></figure></p>
+<p><strong>达夫设备</strong>背后的基本理念是：每次循环中最多可8次调用<strong>process()</strong>函数。循环迭代次数为元素总数除以8。因为总数不一定是8的整数倍，所以startAt变量存放余数，指出第一次循环中应当执行多少次<strong>process()</strong>。比方说现在有12个元素，那么第一次循环将调用<strong>process()</strong>4次，第二次循环调用<strong>process()</strong>8次，用2次循环代替了12次循环。</p>
+<p>此算法一个稍快的版本取消了<code>switch</code>表达式，将余数处理与主循环分开：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//credit: Jeff Greenberg</span></span><br><span class="line"><span class="keyword">var</span> i = items.length % <span class="number">8</span>;</span><br><span class="line"><span class="keyword">while</span>(i)&#123;</span><br><span class="line">    process(items[i--]);</span><br><span class="line">&#125;</span><br><span class="line">i = <span class="built_in">Math</span>.floor(items.length / <span class="number">8</span>);</span><br><span class="line"><span class="keyword">while</span>(i)&#123;</span><br><span class="line">    process(items[i--]);</span><br><span class="line">    process(items[i--]);</span><br><span class="line">    process(items[i--]);</span><br><span class="line">    process(items[i--]);</span><br><span class="line">    process(items[i--]);</span><br><span class="line">    process(items[i--]);</span><br><span class="line">    process(items[i--]);</span><br><span class="line">    process(items[i--]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我读懂了作者的意思，却没看懂作者的代码，自己改了一下通过了测试<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> items = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span>;</span><br><span class="line"><span class="keyword">var</span> iterations = <span class="built_in">Math</span>.floor(items.length / <span class="number">8</span>),</span><br><span class="line">       startAt = items.length % <span class="number">8</span>,</span><br><span class="line">    		 i = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">process</span> (<span class="params">argument</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(argument);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(startAt--)&#123;</span><br><span class="line">    process(items[i++]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(iterations--)&#123;</span><br><span class="line">    process(items[i++]);</span><br><span class="line">    process(items[i++]);</span><br><span class="line">    process(items[i++]);</span><br><span class="line">    process(items[i++]);</span><br><span class="line">    process(items[i++]);</span><br><span class="line">    process(items[i++]);</span><br><span class="line">    process(items[i++]);</span><br><span class="line">    process(items[i++]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>####条件语句<br>使用<code>if-else</code>或者<code>switch</code>的流行理论是基于测试条件的数量：条件数量较大，倾向于使用<code>switch</code>而不是<code>if-else</code>。这通常归结到代码的易读性。这种观点认为，如果条件较少时，<code>if-else</code>容易阅读，而条件较多时<code>switch</code>更容易阅读。</p>
+<p>大多数情况下<code>switch</code>表达式比<code>if-else</code>更快，但只有当条件体数量很大时才明显更快。两者间的主要性能区别在于：当条件体增加时，<code>if-else</code>性能负担增加的程度比<code>switch</code>更多。因此，我们的自然倾向认为条件体较少时应使用<code>if-else</code>而条件体较多时应使用<code>switch</code>表达式，如果从性能方面考虑也是正确的。</p>
+<p>一般来说，<code>if-else</code>适用于判断两个离散的值或者判断几个不同的值域。如果判断多于两个离散值，<code>switch</code>表达式将是更理想的选择。</p>
+<p>####优化<code>if-else</code><br>优化 if-else 的目标总是最小化找到正确分支之前所判断条件体的数量。最简单的优化方法是将最常见的条件体放在首位。考虑下面的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (value &lt; <span class="number">5</span>) &#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value &gt; <span class="number">5</span> &amp;&amp; value &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码只有当value值经常小于5时才是最优的。如果value经常大于等于10，那么在进入正确分支之前，必须两次运算条件体，导致表达式的平均时间提高。<code>if-else</code>中的条件体应当总是按照从最大概率到最小概率的顺序排列，以保证理论运行速度最快。</p>
+<p>另外一种减少条件判断数量的方法是将<code>if-else</code>组织成一系列嵌套的<code>if-else</code>表达式。使用一个单独的一长串的<code>if-else</code>通常导致运行缓慢，因为每个条件体都要被计算。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (value == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result0;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result1;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result2;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">3</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result3;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">4</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result4;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">5</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result5;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">6</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result6;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">7</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result7;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">8</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result8;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">9</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> result9;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> result10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在这个<code>if-else</code>表达式中，所计算条件体的最大数目是10。如果假设value的值在0到10之间均匀分布，那么会增加平均运行时间。为了减少条件判断的数量，此代码可重写为一系列嵌套的<code>if-else</code>表达式，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (value &lt; <span class="number">6</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (value &lt; <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (value == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result0;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> result2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (value == <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result3;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result4;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> result5;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (value &lt; <span class="number">8</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (value == <span class="number">6</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result6;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> result7;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (value == <span class="number">8</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result8;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == <span class="number">9</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result9;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> result10;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在重写的<code>if-else</code>表达式中，每次抵达正确分支时最多通过四个条件判断。它使用二分搜索法将值域分成了一系列区间，然后逐步缩小范围。当数值范围分布在0到10时，此代码的平均运行时间大约是前面那个版本的一半。此方法适用于需要测试大量数值的情况(相对离散值来说<code>switch</code>更合适)。</p>
+<p>####查表法(不是查水表:)</p>
+<p>有些情况下要避免使用<code>if-else</code>或<code>switch</code>。当有大量离散值需要测试时，<code>if-else</code>和<code>switch</code>都比使用查表法要慢得多。在JavaScript中查表法可使用数组或者普通对象实现，查表法访问数据比<code>if-else</code>或者<code>switch</code>更快。</p>
+<p>与<code>if-else</code>和<code>switch</code>相比，查表法不仅非常快，而且当需要测试的离散值数量非常大时，也有助于保持代码的可读性。例如，当 switch 表达式很大时就变得很笨重，诸如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (value) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> result0;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> result1;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> result2;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> result3;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">return</span> result4;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">        <span class="keyword">return</span> result5;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">        <span class="keyword">return</span> result6;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">        <span class="keyword">return</span> result7;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">        <span class="keyword">return</span> result8;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">        <span class="keyword">return</span> result9;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">return</span> result10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>switch</code>表达式代码所占的空间可能与它的重要性不成比例。整个结构可以用一个数组查表替代：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个包含所有result的数组</span></span><br><span class="line"><span class="keyword">var</span> results = [result0, result1, result2, result3, result4, result5, result6, result7, result8, result9, result10];</span><br><span class="line"><span class="comment">//返回正确的result</span></span><br><span class="line"><span class="keyword">return</span> results[value];</span><br></pre></td></tr></table></figure></p>
+<p>当使用查表法时，必须完全消除所有条件判断。操作转换成一个数组项查询或者一个对象成员查询。使用查表法的一个主要优点是：由于没有条件判断，当候选值数量增加时，很少，甚至没有增加额外的性能开销。</p>
+<p>查表法最常用于一个键和一个值形成逻辑映射的领域(如前面的例子)。一个<code>switch</code>表达式更适合于每个键需要一个独特的动作，或者一系列动作的场合。</p>
+<p>###第五章 字符串和正则表达式</p>
+<p>####字符串连接<br>字符串连接表现出惊人的性能紧张。通常一个任务通过一个循环，向字符串末尾不断地添加内容，来创建一个字符串(例如，创建一个HTML表或者一个XML文档)，但此类处理在一些浏览器上表现糟糕而遭人痛恨。</p>
+<p>当连接少量字符串时，所有这些函数都很快，临时使用的话，可选择最熟悉的使用。当合并字符串的长度和数量增加之后，有些函数开始显示出自己的威力。</p>
+<p><code>(+)</code>和<code>(+=)</code>加和加等于操作</p>
+<p>这些操作符提供了连接字符串的最简单方法，事实上，除IE7和它之前的所有现代浏览器都对此优化得很好，所以你不需要寻找其他方法。然而，有些技术可以最大限度地提高这些操作的效率。</p>
+<p>首先，看一个例子。这是连接字符串的常用方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str += <span class="string">"one"</span> + <span class="string">"two"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>此代码执行时，发生四个步骤：</p>
+<ol>
+<li>####内存中创建了一个临时字符串。</li>
+<li>####临时字符串的值被赋予“onetwo”。</li>
+<li>####临时字符串与 str 的值进行连接。</li>
+<li>####结果赋予 str。</li>
+</ol>
+<p>这基本上就是浏览器完成这一任务的过程。</p>
+<p>下面的代码通过两个离散表达式直接将内容附加在<code>str</code>上避免了临时字符串(上面列表中第1步和第2步)。在大多数浏览器上这样做可加快10%-40%：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str += <span class="string">"one"</span>;</span><br><span class="line">str += <span class="string">"two"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>更进一步<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = str + <span class="string">"one"</span> + <span class="string">"two"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这就避免了使用临时字符串，因为赋值表达式开头以<code>str</code>为基础，一次追加一个字符串，从左至右依次连接。如果改变连接顺序(例如，<code>str = &quot;one&quot; + str + &quot;two&quot;</code>)，你会失去这种优化。这与浏览器合并字符串时分配内存的方法有关。除IE以外，浏览器尝试扩展表达式左端字符串的内存，然后简单地将第二个字符串拷贝到它的尾部(如下图)。如果在一个循环中，基本字符串位于最左端，就可以避免多次复制一个越来越大的基本字符串。<br><img src="/img/stringadd.jpg" alt="s1复制到s2的尾部形成s3，基本字符串s2没有被复制"><br>这些技术并不适用于IE。它们几乎没有任何作用，在IE8上甚至比IE7和早期版本更慢。这与IE执行连接操作的机制有关。</p>
+<p>####正则表达式优化<br>简单说说正则表达式工作原理</p>
+<p><strong>第一步：编译</strong><br>当你创建了一个正则表达式对象之后(使用一个正则表达式直接量或者RegExp构造器)，浏览器检查你的模板有没有错误，然后将它转换成一个本机代码例程，用于执行匹配工作。如果你将正则表达式赋给一个变量，你可以避免重复执行此步骤。</p>
+<p><strong>第二步：设置起始位置</strong><br>当一个正则表达式投入使用时，首先要确定目标字符串中开始搜索的位置。它是字符串的起始位置，或者由正则表达式的 lastIndex 属性指定，但是当它从第四步返回到这里的时候(因为尝试匹配失败)，此位置将位于最后一次尝试起始位置推后一个字符的位置上。</p>
+<p><strong>第三步：匹配每个正则表达式的字元</strong><br>正则表达式一旦找好起始位置，它将一个一个地扫描目标文本和正则表达式模板。当一个特定字元匹配失败时，正则表达式将试图回溯到扫描之前的位置上，然后进入正则表达式其他可能的路径上。</p>
+<p><strong>第四步：匹配成功或失败</strong><br>如果在字符串的当前位置上发现一个完全匹配，那么正则表达式宣布成功。如果正则表达式的所有可能路径都尝试过了，但是没有成功地匹配，那么正则表达式引擎回到第二步，从字符串的下一个字符重新尝试。只有字符串中的每个字符(以及最后一个字符后面的位置)都经历了这样的过程之后，还没有成功匹配，那么正则表达式就宣布彻底失败。</p>
+<p>###第六章 快速响应的用户界面<br>这章直接写小结吧</p>
+<p>JavaScript和用户界面更新在同一个进程内运行，同一时刻只有其中一个可以运行。这意味着当JavaScript代码正在运行时，用户界面不能响应输入，反之亦然。有效地管理UI线程就是要确保JavaScript不能运行太长时间，以免影响用户体验。最后，请牢记如下几点：</p>
+<ol>
+<li>####JavaScript运行时间不应该超过100毫秒。过长的运行时间导致UI更新出现可察觉的延迟，从而对整体用户体验产生负面影响。</li>
+<li>####JavaScript运行期间，浏览器响应用户交互的行为存在差异。无论如何，JavaScript长时间运行将导致用户体验混乱和脱节。</li>
+<li>####定时器可用于安排代码推迟执行，它使得你可以将长运行脚本分解成一系列较小的任务。</li>
+<li>####网页工人线程是新式浏览器才支持的特性，它允许你在UI线程之外运行JavaScript代码而避免锁定UI。</li>
+</ol>
+<p>网页应用程序越复杂，积极主动地管理UI线程就越显得重要。没有什么JavaScript代码可以重要到允许影响用户体验的程度。</p>
+<p>###第七章 Ajax<br>Ajax是高性能JavaScript的基石。它可以通过延迟下载大量资源使页面加载更快。它通过在客户端和服务器之间异步传送数据，避免页面集体加载。它还用于在一次HTTP请求中获取整个页面的资源。通过选择正确的传输技术和最有效的数据格式，你可以显著改善用户与网站之间的互动。</p>
+<p>####数据传输<br>Ajax，在它最基本的层面，是一种与服务器通讯而不重载当前页面的方法，数据可从服务器获得或发送给服务器。有多种不同的方法构造这种通讯通道，每种方法都有自己的优势和限制。</p>
+<p>#####数据格式<br>在考虑数据传输技术时，你必须考虑这些因素：功能集，兼容性，性能，和方向(发给服务器或者从服务器接收)。在考虑数据格式时，唯一需要比较的尺度的就是速度。</p>
+<p>没有哪种数据格式会始终比其他格式更好。根据传送什么数据、用于页面上什么目的，某种格式可能下载更快，另一种格式可能解析更快。</p>
+<p><strong>XML</strong><br>Ajax开始变得流行起来它选择了XML数据格式。有很多事情是围绕着它做的：极端的互通性(服务器端和客户端都能够良好支持)，格式严格，易于验证。那时JSON还没有正式作为交换格式，几乎所有的服务器端语言都有操作XML的库。</p>
+<p>这里是用XML编码的用户列表的例子：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding='UTF-8'?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">users</span> <span class="attribute">total</span>=<span class="value">"4"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">user</span> <span class="attribute">id</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">username</span>&gt;</span>alice<span class="tag">&lt;/<span class="title">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">realname</span>&gt;</span>Alice Smith<span class="tag">&lt;/<span class="title">realname</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">email</span>&gt;</span>alice@alicesmith.com<span class="tag">&lt;/<span class="title">email</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">user</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">user</span> <span class="attribute">id</span>=<span class="value">"2"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">username</span>&gt;</span>bob<span class="tag">&lt;/<span class="title">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">realname</span>&gt;</span>Bob Jones<span class="tag">&lt;/<span class="title">realname</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">email</span>&gt;</span>bob@bobjones.com<span class="tag">&lt;/<span class="title">email</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">user</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">user</span> <span class="attribute">id</span>=<span class="value">"3"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">username</span>&gt;</span>carol<span class="tag">&lt;/<span class="title">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">realname</span>&gt;</span>Carol Williams<span class="tag">&lt;/<span class="title">realname</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">email</span>&gt;</span>carol@carolwilliams.com<span class="tag">&lt;/<span class="title">email</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">user</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">user</span> <span class="attribute">id</span>=<span class="value">"4"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">username</span>&gt;</span>dave<span class="tag">&lt;/<span class="title">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">realname</span>&gt;</span>Dave Johnson<span class="tag">&lt;/<span class="title">realname</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">email</span>&gt;</span>dave@davejohnson.com<span class="tag">&lt;/<span class="title">email</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">user</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">users</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>与其他格式相比，XML极其冗长。每个离散的数据片断需要大量结构，所以有效数据的比例非常低。而且XML语法有些轻微模糊。</p>
+<p><strong>JSON</strong><br>JSON是一种使用JavaScript对象和数组直接量编写的轻量级并易于解析的数据格式，它由Douglas Crockford创立并推广开来。下例是用 JSON 书写的用户列表：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;<span class="string">"id"</span>:<span class="number">1</span>, <span class="string">"username"</span>:<span class="string">"alice"</span>, <span class="string">"realname"</span>: <span class="string">"Alice Smith"</span>, <span class="string">"email"</span>:<span class="string">"alice@alicesmith.com"</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"id"</span>:<span class="number">2</span>, <span class="string">"username"</span>:<span class="string">"bob"</span>, <span class="string">"realname"</span>: <span class="string">"Bob Jones"</span>, <span class="string">"email"</span>:<span class="string">"bob@bobjones.com"</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"id"</span>:<span class="number">3</span>, <span class="string">"username"</span>:<span class="string">"carol"</span>, <span class="string">"realname"</span>: <span class="string">"Carol Williams"</span>,<span class="string">"email"</span>:<span class="string">"carol@carolwilliams.com"</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"id"</span>:<span class="number">4</span>, <span class="string">"username"</span>:<span class="string">"dave"</span>, <span class="string">"realname"</span>: <span class="string">"Dave Johnson"</span>, <span class="string">"email"</span>:<span class="string">"dave@davejohnson.com"</span>&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>用户表示为一个对象，用户列表成为一个数组，与JavaScript中其他数组或对象的写法相同。这意味着如果它被包装在一个回调函数中，JSON 数据可称为能够运行的JavaScript代码。在JavaScript中解析JSON可简单地使用()：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseJSON</span>(<span class="params">responseText</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="string">'('</span> + responseText + <span class="string">')'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>关于JSON和<code>eval</code>需要注意</strong><br>在代码中使用<code>eval</code>是很危险的，特别使用它来解析第三方的JSON数据(其中可能包含恶意代码)时，尽可能使用<code>JSON.parse()</code>方法解析字符串本身。</p>
+<p>正如 XML 那样，它也可以提炼成一个更简单的版本。这种情况下，我们可将名字缩短(尽管可读性变差)：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123; <span class="string">"i"</span>: <span class="number">1</span>, <span class="string">"u"</span>: <span class="string">"alice"</span>, <span class="string">"r"</span>: <span class="string">"Alice Smith"</span>, <span class="string">"e"</span>: <span class="string">"alice@alicesmith.com"</span> &#125;,</span><br><span class="line">    &#123; <span class="string">"i"</span>: <span class="number">2</span>, <span class="string">"u"</span>: <span class="string">"bob"</span>, <span class="string">"r"</span>: <span class="string">"Bob Jones"</span>, <span class="string">"e"</span>: <span class="string">"bob@bobjones.com"</span> &#125;,</span><br><span class="line">    &#123; <span class="string">"i"</span>: <span class="number">3</span>, <span class="string">"u"</span>: <span class="string">"carol"</span>, <span class="string">"r"</span>: <span class="string">"Carol Williams"</span>, <span class="string">"e"</span>: <span class="string">"carol@carolwilliams.com"</span> &#125;,</span><br><span class="line">    &#123; <span class="string">"i"</span>: <span class="number">4</span>, <span class="string">"u"</span>: <span class="string">"dave"</span>, <span class="string">"r"</span>: <span class="string">"Dave Johnson"</span>, <span class="string">"e"</span>: <span class="string">"dave@davejohnson.com"</span> &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>还有更过分的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    [ <span class="number">1</span>, <span class="string">"alice"</span>, <span class="string">"Alice Smith"</span>, <span class="string">"alice@alicesmith.com"</span> ],</span><br><span class="line">    [ <span class="number">2</span>, <span class="string">"bob"</span>, <span class="string">"Bob Jones"</span>, <span class="string">"bob@bobjones.com"</span> ],</span><br><span class="line">    [ <span class="number">3</span>, <span class="string">"carol"</span>, <span class="string">"Carol Williams"</span>, <span class="string">"carol@carolwilliams.com"</span> ],</span><br><span class="line">    [ <span class="number">4</span>, <span class="string">"dave"</span>, <span class="string">"Dave Johnson"</span>, <span class="string">"dave@davejohnson.com"</span> ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p><strong>JSON-P</strong><br>事实上JSON可被本地执行有几个重要的性能影响。当使用XHR时JSON数据作为一个字符串返回。该字符串使用()转换为一个本地对象。然而，当使用动态脚本标签插入时，JSON数据被视为另一个JavaScript文件并作为本地码执行。为做到这一点，数据必须被包装在回调函数之中。这就是所谓的“JSON填充”或JSON-P。下面是我们用JSON-P格式书写的用户列表：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">parseJSON([</span><br><span class="line">    &#123;<span class="string">"id"</span>:<span class="number">1</span>, <span class="string">"username"</span>:<span class="string">"alice"</span>, <span class="string">"realname"</span>:<span class="string">"Alice Smith"</span>, <span class="string">"email"</span>:<span class="string">"alice@alicesmith.com"</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"id"</span>:<span class="number">2</span>, <span class="string">"username"</span>:<span class="string">"bob"</span>, <span class="string">"realname"</span>:<span class="string">"Bob Jones"</span>, <span class="string">"email"</span>:<span class="string">"bob@bobjones.com"</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"id"</span>:<span class="number">3</span>, <span class="string">"username"</span>:<span class="string">"carol"</span>, <span class="string">"realname"</span>:<span class="string">"Carol Williams"</span>, <span class="string">"email"</span>:<span class="string">"carol@carolwilliams.com"</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"id"</span>:<span class="number">4</span>, <span class="string">"username"</span>:<span class="string">"dave"</span>, <span class="string">"realname"</span>:<span class="string">"Dave Johnson"</span>, <span class="string">"email"</span>:<span class="string">"dave@davejohnson.com"</span>&#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure></p>
+<p>JSON-P的产生</p>
+<ol>
+<li>####一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；</li>
+<li>####不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响(不仅如此，我们还发现凡是拥有<code>src</code>这个属性的标签都拥有跨域的能力，比如<code>&lt;script&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;iframe&gt;</code>)；</li>
+<li>####于是可以判断，当前阶段如果想通过纯web端(ActiveX控件、服务端代理、属于未来的HTML5之Websocket等方式不算)跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理；</li>
+<li>####恰巧我们已经知道有一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持，所以在客户端几乎可以随心所欲的处理这种格式的数据；</li>
+<li>####这样子解决方案就呼之欲出了，Web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件(一般以JSON为后缀)，显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去。</li>
+<li>####客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了，这种获取远程数据的方式看起来非常像AJAX，但其实并不一样。</li>
+<li>####为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSON-P，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个<code>callback</code>参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!Doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">        <span class="comment">// 得到航班信息查询结果后的回调函数</span></span><br><span class="line">        <span class="keyword">var</span> flightHandler = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'你查询的航班结果是：票价 '</span> + data.price + <span class="string">' 元，'</span> + <span class="string">'余票 '</span> + data.tickets + <span class="string">' 张。'</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">// 提供JSON-P服务的url地址(不管是什么类型的地址，最终生成的返回值都是一段javascript代码)</span></span><br><span class="line">        <span class="keyword">var</span> url = <span class="string">"http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&amp;callback=flightHandler"</span>;</span><br><span class="line">        <span class="comment">// 创建script标签，设置其属性</span></span><br><span class="line">        <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">        script.setAttribute(<span class="string">'src'</span>, url);</span><br><span class="line">        <span class="comment">// 把script标签加入head，此时调用开始</span></span><br><span class="line">        <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script);</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们看到调用的url中传递了一个code参数，告诉服务器我要查的是CA1998次航班的信息，而callback参数则告诉服务器，我的本地回调函数叫做flightHandler，所以请把查询结果传入这个函数中进行调用。OK，服务器很聪明，这个叫做flightResult.aspx的页面生成了一段这样的代码提供给jsonp.html（服务端的实现这里就不演示了，与你选用的语言无关，说到底就是拼接字符串）：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flightHandler(&#123;</span><br><span class="line">    <span class="string">"code"</span>: <span class="string">"CA1998"</span>,</span><br><span class="line">    <span class="string">"price"</span>: <span class="number">1780</span>,</span><br><span class="line">    <span class="string">"tickets"</span>: <span class="number">5</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>Ajax和JSON-P这两种技术在调用方式上“看起来”很像，目的也一样，都是请求一个url，然后把服务器返回的数据进行处理，因此jQuery和Ext等框架都把JSON-P作为Ajax的一种形式进行了封装。</p>
+<p>但Ajax和JSON-P其实本质上是不同的东西。Ajax的核心是通过XmlHttpRequest获取非本页内容，而JSON-P的核心则是动态添加<code>&lt;script&gt;</code>标签来调用服务器提供的js脚本。</p>
+<p>jQuery在处理JSON-P类型的Ajax时(虽然jQuery也把JSON-P归入了Ajax，但其实它们真的不是一回事儿)，自动帮你生成回调函数并把数据取出来供success属性方法来调用。</p>
+<p><strong>HTML</strong><br>通常你所请求的数据以HTML返回并显示在页面上。JavaScript能够比较快地将一个大数据结构转化为简单的HTML，但是服务器完成同样工作更快。一种技术考虑是在服务器端构建整个HTML然后传递给客户端，JavaScript只是简单地下载它然后放入innerHTML。</p>
+<p>此技术的问题在于，HTML是一种详细的数据格式，比XML更加冗长。在数据本身的最外层，可有嵌套的HTML标签，每个都具有ID，类，和其他属性。HTML格式可能比实际数据占用更多的空间，尽管可通过尽量少用标签和属性缓解这一问题。</p>
+<p><strong>自定义格式</strong><br>最理想的数据格式只包含必要的结构，使你能够分解出每个字段。你可以自定义一种格式只是简单地用一个分隔符将数据连结起来。</p>
+<p>####数据格式总结<br>总的来说越轻量级的格式越好，最好是JSON和字符分隔的自定义格式。如果数据集很大或者解析时间成问题，那么就使用这两种格式之一：</p>
+<p>XML相比JSON有许多优点。这种格式小得多，在总响应报文中，结构占用的空间更小，数据占用的更多。特别是数据包含数组而不是对象时。JSON与大多数服务器端语言的编解码库之间有着很好的互操作性。它在客户端的解析工作微不足道，使你可以将更多写代码的时间放在其他数据处理上。对网页开发者来说最重要的是，它是表现最好的格式之一，即因为在线传输相对较小，也因为解析十分之快。JSON是高性能Ajax的基石，特别是使用动态脚本标签插入时。</p>
+<p>最快的Ajax请求就是你不要用它。可以缓存数据来减少Ajax请求。</p>
+<p>###第八章 编程实践<br>关于这章，直接写小结吧</p>
+<p>JavaScript提出了一些独特的性能挑战，关系到你组织代码的方法。网页应用变得越来越高级，包含的JavaScript代码越来越多，出现了一些模式和反模式。请牢记以下编程经验：</p>
+<ol>
+<li>####通过避免使用<strong>eval()</strong>和<strong>Function()</strong>构造器避免二次评估。此外，给<strong>setTimeout()</strong>和<strong>setInterval()</strong>传递函数参数而不是字符串参数。</li>
+<li>####创建新对象和数组时使用对象直接量和数组直接量。它们比非直接量形式创建和初始化更快。</li>
+<li>####避免重复进行相同工作。当需要检测浏览器时，使用延迟加载或条件预加载。</li>
+<li>####当执行数学远算时，考虑使用位操作，它直接在数字底层进行操作。</li>
+<li>####原生方法总是比 JavaScript 写的东西要快。尽量使用原生方法。</li>
+</ol>
+<p>###第九章 创建并部署高性能JavaScript应用程序<br>关于这章，还是直接写小结吧</p>
+<ol>
+<li>####合并JavaScript文件，减少HTTP请求的数量</li>
+<li>####使用YUI压缩器紧凑处理JavaScript文件</li>
+<li>####以压缩形式提供JavaScript文件(gzip编码)</li>
+<li>####通过设置HTTP响应报文头使JavaScript文件可缓存，通过向文件名附加时间戳解决缓存问题</li>
+<li>####使用内容传递网络(CDN)提供JavaScript文件，CDN不仅可以提高性能，它还可以为你管理压缩和缓存</li>
+</ol>
+<p>###第十章 工具<br>关于这章，还是直接写小结吧</p>
+<ol>
+<li>####使用网络分析器找出加载脚本和其它页面资源的瓶颈所在，这有助于决定哪些脚本需要延迟加载，或者进行进一步分析。</li>
+<li>####传统的智慧告诉我们应尽量减少HTTP请求的数量，尽量延迟加载脚本以使页面渲染速度更快，向用户提供更好的整体体验。</li>
+<li>####使用性能分析器找出脚本运行时速度慢的部分，检查每个函数所花费的时间，以及函数被调用的次数，通过调用栈自身提供的一些线索来找出哪些地方应当努力优化。</li>
+<li>####虽然花费时间和调用次数通常是数据中最有价值的点，还是应当仔细察看函数的调用过程，可能发现其它优化方法。</li>
+</ol>
+<p>好了，花了近两天时间把这本《高性能JavaScript》总结了，大致把我觉得重要的和有用的给拣出来了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://zhujun24.github.io/2014/12/28/《高性能JavaScript》/" data-id="cifthoral0010jgcj509yetjl" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://zhujun24.github.io/2014/12/28/《高性能JavaScript》/#disqus_thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/30/《JavaScript启示录》第一章 JavaScript对象/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          《JavaScript启示录》第一章 JavaScript对象
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/23/中心2014下半年工作总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">中心2014下半年工作总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/08/02/Git&Github 团队协作/">Git&amp;Github 团队协作</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/02/CSS3-Transition值为Auto的情况/">CSS3 Transition值为Auto的情况</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/09/CSS浮动/">CSS浮动</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/03/CSS优先级/">CSS优先级</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/03/2015年实习生面试小记/">2015年实习生面试小记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Work/">Work</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conclusion/">Conclusion</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/">Front-End</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-Slim/">PHP Slim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/about" target="_blank">关于</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.hfutfind.com/" target="_blank">流光易抛的博客</a>
+          </li>
+        
+          <li>
+            <a href="http://timehub.cn/" target="_blank">小径分岔的花园</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=1&ptype=1&speed=0&skin=2&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=3199138135&verifier=7c027f17&dpc=1"></iframe>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 zhujun24<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+      <br>
+      Weibo:&nbsp;<a href="http://weibo.com/zhujun87654321" target="_blank">低位</a>
+      <br>
+      Github:&nbsp;<a href="https://github.com/zhujun24" target="_blank">zhujun24</a>
+      <br>
+      Email:&nbsp;<a href="mailto:zhujun87654321@gmail.com">zhujun87654321@gmail.com</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'zhujunhexoblog';
+  
+  var disqus_url = 'http://zhujun24.github.io/2014/12/28/《高性能JavaScript》/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+    <a href="https://github.com/zhujun24"><img style="position: absolute; top: 0; right: 0; border: 0;z-index: 1;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  </div>
+</body>
+</html>

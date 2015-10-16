@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS3 Transition值为Auto的情况 | 记录&amp;分享</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="实习了快一个月了，一个人在外还是有些忙的，上个月也没写博客了，最近跟着师兄做一个开源的项目Ant Design，在Github上开源了。虽说是跟着做，实际就是打打杂，写两个基本简单的组件。写之前也是简单学习了React这个现在来看火的发烫的前端库(or框架？)，网上有文档也有教程，跟着把DEMO都写了一遍，虚拟DOM真神奇，就像去年这个时候认识AngularJS一样，给你颠覆的感觉，不过感觉的程度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3 Transition值为Auto的情况">
+<meta property="og:url" content="http://zhujun24.github.io/2015/08/02/CSS3-Transition值为Auto的情况/index.html">
+<meta property="og:site_name" content="记录&分享">
+<meta property="og:description" content="实习了快一个月了，一个人在外还是有些忙的，上个月也没写博客了，最近跟着师兄做一个开源的项目Ant Design，在Github上开源了。虽说是跟着做，实际就是打打杂，写两个基本简单的组件。写之前也是简单学习了React这个现在来看火的发烫的前端库(or框架？)，网上有文档也有教程，跟着把DEMO都写了一遍，虚拟DOM真神奇，就像去年这个时候认识AngularJS一样，给你颠覆的感觉，不过感觉的程度">
+<meta property="og:updated_time" content="2015-08-02T08:49:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3 Transition值为Auto的情况">
+<meta name="twitter:description" content="实习了快一个月了，一个人在外还是有些忙的，上个月也没写博客了，最近跟着师兄做一个开源的项目Ant Design，在Github上开源了。虽说是跟着做，实际就是打打杂，写两个基本简单的组件。写之前也是简单学习了React这个现在来看火的发烫的前端库(or框架？)，网上有文档也有教程，跟着把DEMO都写了一遍，虚拟DOM真神奇，就像去年这个时候认识AngularJS一样，给你颠覆的感觉，不过感觉的程度">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8bdb331f562eaf36d2110947341db92d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">记录&amp;分享</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">—By zhujun24</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS3-Transition值为Auto的情况" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/02/CSS3-Transition值为Auto的情况/" class="article-date">
+  <time datetime="2015-08-02T03:31:34.000Z" itemprop="datePublished">八月 2 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS3 Transition值为Auto的情况
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>实习了快一个月了，一个人在外还是有些忙的，上个月也没写博客了，最近跟着师兄做一个开源的项目<a href="http://ant.design/" target="_blank" rel="external">Ant Design</a>，在<a href="https://github.com/ant-design/ant-design" target="_blank" rel="external">Github</a>上开源了。虽说是跟着做，实际就是打打杂，写两个基本简单的组件。写之前也是简单学习了React这个现在来看火的发烫的前端库(or框架？)，网上有文档也有教程，跟着把<a href="https://github.com/zhujun24/learn-react" target="_blank" rel="external">DEMO</a>都写了一遍，虚拟DOM真神奇，就像去年这个时候认识AngularJS一样，给你颠覆的感觉，不过感觉的程度不及AngularJS。</p>
+<p>好像说了不少和CSS3无关的东西，来了。<br><a id="more"></a><br>实现一个Notification组件，大概就是通过事件触发来生成一个消息提醒框，在窗口的右上角，加个动画效果，进场动画是框框从右侧闪出来，这个简单，本来宽度是定的，<code>left</code>值<code>transition</code>一下就好了，<code>opacity</code>也给动一下就搞定了。</p>
+<p>出场动画来了，高度和透明度都变为0就好，效果不错，看看怎么实现：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">&amp;</span><span class="tag">-fade-leave</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="variable">@noticeMarginTop</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="variable">@noticePadding</span>;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="variable">@noticePadding</span>;</span><br><span class="line">    <span class="attribute">height</span>: auto;</span><br><span class="line">    <span class="attribute">transition</span>: all .<span class="number">3s</span> ease-in-out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">&amp;</span><span class="tag">-fade-leave</span><span class="keyword">&amp;</span><span class="tag">-fade-leave-active</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因为每个框框的内容都不一样多，高度绝对不能写死，那就不设置吧，让它自己撑开就好。调试动画的时候发现根本不是你想要的样子。从<code>auto</code>直接变到0，简直就是闪现的逆过程，难道这么简单的CSS3都没有实现吗？</p>
+<p>答案是确实没有实现，估计比我们想象的要难许多，既然<code>auto</code>到0实现不了，那就算了吧！什么？强迫症怎么能算了！</p>
+<p>某度某哥某Stackoverflow通通查一遍，好像也有同胞遇到过这样的问题，好像用的<code>max-</code>，值设为一个所有可能值的最大值，再加上<code>overflow:hidden</code>来解决这个问题：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">&amp;</span><span class="tag">-fade-leave</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="variable">@noticeMarginTop</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="variable">@noticePadding</span>;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="variable">@noticePadding</span>;</span><br><span class="line">    <span class="attribute">max-height</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: all .<span class="number">3s</span> ease-in-out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">&amp;</span><span class="tag">-fade-leave</span><span class="keyword">&amp;</span><span class="tag">-fade-leave-active</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">max-height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>刚开始我没懂这个是什么原因，后来相同了就觉得非常简单，<code>max-height</code>设为一个较大的值，这个值从<code>auto``transition</code>为0的时候，由于<code>overflow:hidden</code>的作用，看上去就像是<code>height</code>从<code>auto</code>变为0。</p>
+<p>看似完美的解决了这个问题，注意前文说的，<code>max-height</code>设为一个较大的值，这个值一般为所有可能值中最大的一个，为什么呢？</p>
+<p>简单分析一下，若不是最大值，动画一开始的时候就把这个<code>height</code>变为这个非最大值，这个过程(其实时间极短，就像是很突兀的改了<code>height</code>一样的闪动)，如果这个框框的高度和这个非最大值差距大的话，恭喜你，这个动画是失败的，会有明显的卡顿；</p>
+<p>再看看为最大值的情况，这个很好理解，不会出现动画一开始的卡顿，可是，又有情况来了，若该框框高度比较小，细心的你会发现动画怎么延迟触发了？因为延迟的这段时间消耗在<code>max-height</code>到实际的<code>height</code>中。</p>
+<p>这么来说，这个问题现阶段还没有很好的解决办法，除非用JS写动画，JS写动画本来就比较恶心了，又是React的虚拟DOM里的动画，官方建议使用CSS3来实现动画，因为虚拟DOM写动画简直操蛋，其次，浏览器要是实现了<code>transition</code>值为<code>auto</code>这个功能那才算完美的解决了这个问题。</p>
+<p>无论值设为最大值还是非最大值，都会有或大或小的瑕疵，而又没有完美的解决方案，折中吧，尽量让可能值的范围稳定，如果设为最大值卡顿很明显的话，试试设置成较大值，至于这么值具体多少，去多试试，直至动画效果满意为止，那要是没有满意的怎么办？</p>
+<ul>
+<li>放弃这个动画</li>
+<li>JS实现这个动画</li>
+<li>让浏览器去支持这个功能:)</li>
+</ul>
+<p>同理，<code>auto</code>到0是这样，那么0到<code>auto</code>和这个是差不多的，互逆关系。</p>
+<p><a href="http://css3transitionauto.sinaapp.com/" target="_blank" rel="external">DEMO</a>戳这里 在<a href="https://github.com/zhujun24/css3-transition-auto" target="_blank" rel="external">Github</a>上有代码</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://zhujun24.github.io/2015/08/02/CSS3-Transition值为Auto的情况/" data-id="cifthorc00024jgcj55xw1qnm" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://zhujun24.github.io/2015/08/02/CSS3-Transition值为Auto的情况/#disqus_thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/">Front-End</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/02/Git&Github 团队协作/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Git&amp;Github 团队协作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/09/CSS浮动/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">CSS浮动</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/08/02/Git&Github 团队协作/">Git&amp;Github 团队协作</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/02/CSS3-Transition值为Auto的情况/">CSS3 Transition值为Auto的情况</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/09/CSS浮动/">CSS浮动</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/03/CSS优先级/">CSS优先级</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/03/2015年实习生面试小记/">2015年实习生面试小记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Work/">Work</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conclusion/">Conclusion</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/">Front-End</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-Slim/">PHP Slim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/about" target="_blank">关于</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.hfutfind.com/" target="_blank">流光易抛的博客</a>
+          </li>
+        
+          <li>
+            <a href="http://timehub.cn/" target="_blank">小径分岔的花园</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=1&ptype=1&speed=0&skin=2&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=3199138135&verifier=7c027f17&dpc=1"></iframe>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 zhujun24<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+      <br>
+      Weibo:&nbsp;<a href="http://weibo.com/zhujun87654321" target="_blank">低位</a>
+      <br>
+      Github:&nbsp;<a href="https://github.com/zhujun24" target="_blank">zhujun24</a>
+      <br>
+      Email:&nbsp;<a href="mailto:zhujun87654321@gmail.com">zhujun87654321@gmail.com</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'zhujunhexoblog';
+  
+  var disqus_url = 'http://zhujun24.github.io/2015/08/02/CSS3-Transition值为Auto的情况/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+    <a href="https://github.com/zhujun24"><img style="position: absolute; top: 0; right: 0; border: 0;z-index: 1;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript基础 | 记录&amp;分享</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JavaScript基本概念JavaScript由ECMAScript、DOM和BOM组成
+
+
+语法
+关键字，保留字
+变量
+数据类型
+操作符
+语句
+函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript基础">
+<meta property="og:url" content="http://zhujun24.github.io/2015/04/09/JavaScript基础/index.html">
+<meta property="og:site_name" content="记录&分享">
+<meta property="og:description" content="JavaScript基本概念JavaScript由ECMAScript、DOM和BOM组成
+
+
+语法
+关键字，保留字
+变量
+数据类型
+操作符
+语句
+函数">
+<meta property="og:updated_time" content="2015-05-03T07:22:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript基础">
+<meta name="twitter:description" content="JavaScript基本概念JavaScript由ECMAScript、DOM和BOM组成
+
+
+语法
+关键字，保留字
+变量
+数据类型
+操作符
+语句
+函数">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8bdb331f562eaf36d2110947341db92d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">记录&amp;分享</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">—By zhujun24</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/09/JavaScript基础/" class="article-date">
+  <time datetime="2015-04-09T07:08:20.000Z" itemprop="datePublished">四月 9 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="JavaScript基本概念">JavaScript基本概念</h4><p>JavaScript由ECMAScript、DOM和BOM组成</p>
+<blockquote>
+<ul>
+<li>语法</li>
+<li>关键字，保留字</li>
+<li>变量</li>
+<li>数据类型</li>
+<li>操作符</li>
+<li>语句</li>
+<li>函数</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h4 id="语法">语法</h4><ul>
+<li>区分大小写<br>  ECMAScript中的一切(变量、函数名和操作符)都区分大小写，变量Test和变量test是两个不同的变量</li>
+<li>标示符<br>  标示符是指变量、函数和属性的名字，或者函数的参数，标示符命名规则：<br>  第一个字符必须是字母、下划线(_)或者美元符号($)<br>  其他字符可以是字母、下划线、数字或美元符号<br>  ECMAScript标示符推荐采用驼峰大小写格式，也就是第一个字母小写，剩下的每个单词的首字母大写</li>
+<li>注释<br>  //  单行注释<br>  /*<br>  这是一个多行(块级)注释<br>  */</li>
+<li>语句<br>  ECMAScript中的语句以一个分号结尾，如果省略分号，则由解释器确定语句的结尾。虽然语句结尾的分号不是必须的，但建议任何时候都不愿省略。<h4 id="关键字和保留字">关键字和保留字</h4></li>
+<li>关键字有：<br>  break case catch continue default delete do else finally for function if in instanceof new return switch this throw try typeof var void while with</li>
+<li>保留字有：<br>  abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile<br>  关键字和保留字在不同的版本中会有不同，在定义变量时，一定不要将变量名使用系统的关键字或保留字，否则会出现一些莫名其妙的错误！<h4 id="变量">变量</h4>ECMAScript的变量是松散类型的，也叫弱类型的，通俗来说就是变量可以用来保存任何类型的数据。<br>用 <strong>var</strong> 操作符定义变量，后面跟一个变量名，如下所示：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message;</span><br><span class="line"><span class="keyword">var</span> message = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">var</span> message = <span class="number">100</span>,hello = <span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="数据类型">数据类型</h4><p>ECMAScript中有5种数据类型(也称为基本数据类型) Undefined、Null、Boolean、Number、String，还有一种复杂的数据类型——Object。<br>我们可以使用 <strong>typeof</strong> 操作符来检测数据类型<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> message);  <span class="comment">//undefined 未定义</span></span><br><span class="line"><span class="keyword">var</span> boolValue = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> boolValue);  <span class="comment">//boolean 布尔值</span></span><br><span class="line"><span class="keyword">var</span> stringValue = <span class="string">"I'm a string"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> stringValue);  <span class="comment">//string 字符串</span></span><br><span class="line"><span class="keyword">var</span> numberValue = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> numberValue);  <span class="comment">//number 数值</span></span><br><span class="line"><span class="keyword">var</span> objValue = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> objValue);  <span class="comment">//object 对象或null</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hehe</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//  do something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> hehe);  <span class="comment">//function 函数</span></span><br></pre></td></tr></table></figure></p>
+<p>Undefined类型只有一个值，在使用 <strong>var</strong> 声明变量但未对其初始化时，这个变了的值就是undefined<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> message);</span><br><span class="line"><span class="keyword">var</span> message;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> message);</span><br><span class="line"><span class="keyword">var</span> message;</span><br><span class="line"><span class="built_in">console</span>.log(message == <span class="literal">undefined</span>);</span><br><span class="line"><span class="keyword">var</span> message = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> message);</span><br></pre></td></tr></table></figure></p>
+<p>Null类型是第二个只有一个值的数据类型，这个特殊的值就是null，从逻辑角度来看，null值表示一个空对象指针，这也就是使用typeof操作符检测其类型时返回object的原因<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> car = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> car);</span><br></pre></td></tr></table></figure></p>
+<p>实际上，undefined值是派生自null值的，因此<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>);</span><br></pre></td></tr></table></figure></p>
+<p>Boolean类型是使用比较多的类型之一，该类型只有两个字面量值true和false<br>虽然Boolean类型的值只有两个，但ECMAScript中所有类型的值都与这两个值等价的值</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:right">true</th>
+<th style="text-align:center">false</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td style="text-align:right">true</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td>String</td>
+<td style="text-align:right">任何非空字符串</td>
+<td style="text-align:center">“”(空字符串)</td>
+</tr>
+<tr>
+<td>Number</td>
+<td style="text-align:right">任何非零数字值</td>
+<td style="text-align:center">0和NaN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td style="text-align:right">任何对象</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td style="text-align:right">没有意义</td>
+<td style="text-align:center">undefined</td>
+</tr>
+</tbody>
+</table>
+<p>这些转换规则对理解流程控制语句自动执行相应的Boolean转换非常重要</p>
+<p>Number类型是比较重要的类型之一，最基本的数值字面格式是十进制数，可以向下面这样直接使用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numberValue = <span class="number">100</span>;</span><br></pre></td></tr></table></figure></p>
+<p>除了十进制表示外，整数还可以通过八进制或十六进制的字面值来表示。</p>
+<p>String类型用于表示字符串，字符串可以由双引号或单引号来表示，如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string1 = <span class="string">"fsdfsfsdf"</span>;</span><br><span class="line"><span class="keyword">var</span> string2 = <span class="string">'weewewe'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>下面这样不行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string1 = <span class="string">"fsdfsfsdf';</span></span><br></pre></td></tr></table></figure></p>
+<p>Object类型<br>ECMAScript中的对象其实就是一组数据和功能的集合。可以通过new操作符来生成一个对象实例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure></p>
+<h4 id="操作符">操作符</h4><p>常用的操作符有+ - * / % ++ – ! &amp;&amp; || &lt; &gt; &lt;= &gt;= == === != !== = ,</p>
+<h4 id="语句">语句</h4><p>if语句<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">	<span class="comment">//do something true</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">//do something false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>do-while语句<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	i = i +<span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">while</span>(i &lt; <span class="number">10</span>)</span><br><span class="line"><span class="built_in">console</span>.log(i);</span><br></pre></td></tr></table></figure></p>
+<p>while语句<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(i &lt; <span class="number">10</span>) &#123;</span><br><span class="line">	i = i +<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i);</span><br></pre></td></tr></table></figure></p>
+<p>for语句<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>for-in语句<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> <span class="built_in">window</span>) &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>break和continue语句<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (i == <span class="number">7</span>) &#123;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (i == <span class="number">7</span>) &#123;</span><br><span class="line">		<span class="keyword">continue</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>switch语句<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">15</span>;</span><br><span class="line"><span class="keyword">switch</span> (i) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">25</span>:</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">25</span>);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">15</span>:</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">15</span>);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">5</span>);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"Other"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="函数">函数</h4><p>函数对于任何语言来说都是一个核心的概念。通过函数可以封装任意多条语句，而且可以在任何地方、任何时候调用执行。ECMAScript中的函数使用function关键字来说明，后跟一组参数以及函数体。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">function_name</span> (<span class="params">argument</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// body...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>return语句执行之后停止并立即退出<br>函数通过function_name加上()来执行，通过unction_name直接传递<br>ECMAScript中的函数没有重载，对于同名的函数，后面定义的会覆盖前面定义的</p>
+<h4 id="常用数学函数">常用数学函数</h4><ul>
+<li>关于 <strong>Math</strong>对象<br>  <strong>Math</strong> 对象并不像 <strong>Date</strong> 和 <strong>String</strong> 那样是对象的类，因此没有构造函数 <strong>Math()</strong>，像 <strong>Math.floor()</strong> 这样的函数只是函数，不是某个对象的方法。直接调用即可。</li>
+<li>绝对值 - Math.abs()</li>
+<li>向上取整 - Math.ceil()</li>
+<li>向下取整 - Math.floor()</li>
+<li>取最大值 - Math.max()</li>
+<li>取最小值 - Math.min()</li>
+<li>四舍五入 - Math.round()</li>
+<li>随机数 - Math.random()<br>  random() 方法可返回介于 0 ~ 1 之间的一个随机数，位数不确定。</li>
+</ul>
+<h4 id="定时器">定时器</h4><ul>
+<li><strong>setTimeout(code,millisec)</strong> 方法用于在指定的毫秒数后调用函数或计算表达式<br>  参数 code 必需。要调用的函数或要执行的代码串<br>  参数 millisec 必需。在执行代码前需等待的毫秒数</li>
+<li><strong>clearTimeout()</strong> 方法可取消由 <strong>setTimeout()</strong> 设置的定时器</li>
+<li><strong>setInterval(code,millisec)</strong> 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式<br>  参数 code 必需。要调用的函数或要执行的代码串<br>  参数 millisec 必需。周期性执行或调用 code 之间的时间间隔，以毫秒计</li>
+<li><strong>clearInterval()</strong> 方法可取消由 <strong>setInterval()</strong> 设置的定时器</li>
+<li>可以使用<strong>setTimeout(code,millisec)</strong>实现<strong>setInterval(code,millisec)</strong><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//要执行的代码</span></span><br><span class="line">    setTimeout(<span class="built_in">arguments</span>.callee, interval);</span><br><span class="line">&#125;, interval);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="JSON">JSON</h4><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，我们称之为JavaScript对象表示法</p>
+<p>另外，也有针对大部分编程语言（包括C++，C#, ColdFusion、Java、Perl、PHP和Python）的JSON库，这些库能将上述语言格式化数据转换成JSON格式</p>
+<p>JSON建构于两种结构：</p>
+<ul>
+<li>对象——名称/值对的集合。一个对象以“{”（左括号）开始，“}”（右括号）结束。每个“名称”后跟一个“:”（冒号）；“‘名称/值’ 对”之间使用“,”（逗号）分隔</li>
+<li>数组——值的有序列表。一个数组以“[”（左中括号）开始，“]”（右中括号）结束。值之间使用“,”（逗号）分隔</li>
+</ul>
+<p>相关方法</p>
+<ul>
+<li><p><strong>eval</strong> 函数将JSON字符串转换为对象(由于安全性问题，不推荐)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="built_in">eval</span>(<span class="string">'('</span> + JSONTest + <span class="string">')'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>目前，Chrome、Firefox、Opera、IE8以上版本也提供了本地JSON支持。JSON解释器提供 <strong>JSON.parse</strong> (将JSON文本转换为对象)和 <strong>JSON.stringify</strong> (将对象转换为JSON字符串)</p>
+</li>
+<li>对于那些并不提供本地JSON支持的浏览器可以引入脚本json2.js，来实现JSON转换功能。json2.js脚本可到<a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js" target="_blank" rel="external">https://github.com/douglascrockford/JSON-js/blob/master/json2.js</a></li>
+</ul>
+<p>JSON已经是JavaScript标准的一部分。目前，主流的浏览器对JSON支持都非常完美，应用JSON，我们可以从XML的解析中摆脱出来，对那些应用 <strong>Ajax</strong> 的Web2.0网站来说，JSON确实是目前最灵活的轻量级方案</p>
+<h4 id="获取元素的样式">获取元素的样式</h4><p>元素的样式由CSS来控制，CSS样式可分为三类——内联样式、内部样式表和外部样式表</p>
+<p>当用JavaScript获取这三种样式时,style只能获取内联样式，获取不到内部样式表和外部样式表的样式,因此要用currentStyle属性，而currentStyle在FF下不支持，用getComputedStyle可以解决<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span> (<span class="params">obj, attr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.currentStyle) &#123;</span><br><span class="line">        <span class="keyword">return</span> obj.currentStyle[attr];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getComputedStyle(obj, <span class="literal">false</span>)[attr];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Cookie">Cookie</h4><p>Cookie不是曲奇饼干，而是浏览器提供的一种机制，它将Document对象的Cookie属性提供给JavaScript。可以由JavaScript对其进行控制，而并不是JavaScript本身的性质。Cookie是存于用户硬盘的一个文件，这个文件通常对应于一个域名，当浏览器再次访问这个域名时，便使这个Cookie可用。因此，Cookie可以跨越一个域名下的多个网页，但不能跨越多个域名使用。</p>
+<p>Cookie机制将信息存储于用户硬盘，因此可以作为全局变量，这是它最大的一个优点。它可以用于以下几种场合</p>
+<blockquote>
+<ul>
+<li>保存用户登录状态</li>
+<li>跟踪用户行为</li>
+<li>定制页面</li>
+<li>创建购物车</li>
+</ul>
+</blockquote>
+<p>当然，上述应用仅仅是Cookie能完成的部分应用，还有更多的功能需要全局变量。Cookie的缺点主要集中于安全性和隐私保护。主要包括以下几种</p>
+<blockquote>
+<ul>
+<li>Cookie可能被禁用</li>
+<li>Cookie是与浏览器相关的</li>
+<li>Cookie可能被删除</li>
+<li>Cookie安全性不够高</li>
+</ul>
+</blockquote>
+<ul>
+<li><p><strong>设置Cookie</strong><br>每个Cookie都是一个名/值对，可以把下面这样一个字符串赋值给document.cookie</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">"uid=12"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>给Cookie设置终止日期</strong><br>到现在为止，所有的Cookie都是单会话Cookie，即浏览器关闭后这些Cookie将会丢失，在实际开发中，Cookie常常需要长期保存，例如保存用户登录的状态。这可以用下面的选项来实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">"uid=12; expiress=GMT_String"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中GMT_String是以GMT格式表示的时间字符串，这条语句就是将uid这个Cookie设置为GMT_String表示的过期时间，超过这个时间，Cookie将消失，不可访问</p>
+<ul>
+<li><strong>删除Cookie</strong><br>为了删除一个Cookie，可以将其过期时间设定为一个过去的时间</li>
+<li><strong>指定可访问Cookie的路径</strong><br>为了控制Cookie可以访问的目录，需要使用path参数设置Cookie，语法如下<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">"name=value; path=CookieDir"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中CookieDir表示可访问Cookie的目录。例如<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">"userId=320; path=/shop"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>就表示当前Cookie仅能在shop目录下使用</p>
+<p>指定可访问Cookie的主机名<br>和路径类似，主机名是指同一个域下的不同主机，例如：www.google.com和gmail.google.com就是两个不同的主机名。默认情况下，一个主机中创建的Cookie在另一个主机下是不能被访问的，但可以通过domain参数来实现对其的控制，其语法格式为<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">"name=value; domain=CookieDomain"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>以google为例，要实现跨主机访问，可以写为<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">"name=value; domain=.google.com"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这样，所有google.com下的主机都可以访问该Cookie</p>
+<p>JavaScript基础知识还有许多需要学习的，水深！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://zhujun24.github.io/2015/04/09/JavaScript基础/" data-id="cifthorb6001fjgcjd5h5hw0m" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://zhujun24.github.io/2015/04/09/JavaScript基础/#disqus_thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/03/2015年实习生面试小记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          2015年实习生面试小记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/03/19/用Slim轻型PHP框架写RESTful APIs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">用Slim轻型PHP框架写RESTful APIs</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/08/02/Git&Github 团队协作/">Git&amp;Github 团队协作</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/02/CSS3-Transition值为Auto的情况/">CSS3 Transition值为Auto的情况</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/09/CSS浮动/">CSS浮动</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/03/CSS优先级/">CSS优先级</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/03/2015年实习生面试小记/">2015年实习生面试小记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Work/">Work</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conclusion/">Conclusion</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/">Front-End</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-Slim/">PHP Slim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/about" target="_blank">关于</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.hfutfind.com/" target="_blank">流光易抛的博客</a>
+          </li>
+        
+          <li>
+            <a href="http://timehub.cn/" target="_blank">小径分岔的花园</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=1&ptype=1&speed=0&skin=2&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=3199138135&verifier=7c027f17&dpc=1"></iframe>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 zhujun24<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+      <br>
+      Weibo:&nbsp;<a href="http://weibo.com/zhujun87654321" target="_blank">低位</a>
+      <br>
+      Github:&nbsp;<a href="https://github.com/zhujun24" target="_blank">zhujun24</a>
+      <br>
+      Email:&nbsp;<a href="mailto:zhujun87654321@gmail.com">zhujun87654321@gmail.com</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'zhujunhexoblog';
+  
+  var disqus_url = 'http://zhujun24.github.io/2015/04/09/JavaScript基础/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+    <a href="https://github.com/zhujun24"><img style="position: absolute; top: 0; right: 0; border: 0;z-index: 1;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  </div>
+</body>
+</html>
