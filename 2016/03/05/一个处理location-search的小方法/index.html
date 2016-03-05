@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>记录&amp;分享</title>
+  <title>一个处理location.search的小方法 | 记录&amp;分享</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="朱俊的个人博客，记录生活，分享生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="记录&分享">
-<meta property="og:url" content="http://zhujun24.github.io/index.html">
+  <meta name="description" content="最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 cookie 和 localstorage 的情况下,可以用 location.search 来存储
+由于 location 是 window 下的,所以获取 location.search 可以直接获取,这个值的第一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个处理location.search的小方法">
+<meta property="og:url" content="http://zhujun24.github.io/2016/03/05/一个处理location-search的小方法/index.html">
 <meta property="og:site_name" content="记录&分享">
-<meta property="og:description" content="朱俊的个人博客，记录生活，分享生活">
+<meta property="og:description" content="最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 cookie 和 localstorage 的情况下,可以用 location.search 来存储
+由于 location 是 window 下的,所以获取 location.search 可以直接获取,这个值的第一个">
+<meta property="og:updated_time" content="2016-03-05T11:07:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录&分享">
-<meta name="twitter:description" content="朱俊的个人博客，记录生活，分享生活">
+<meta name="twitter:title" content="一个处理location.search的小方法">
+<meta name="twitter:description" content="最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 cookie 和 localstorage 的情况下,可以用 location.search 来存储
+由于 location 是 window 下的,所以获取 location.search 可以直接获取,这个值的第一个">
   
   
     <link href="/favicon.ico" rel="icon" type="image/x-ico">
@@ -67,9 +71,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-一个处理location-search的小方法" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-一个处理location-search的小方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/05/一个处理location-search的小方法/" class="article-date">
   <time datetime="2016-03-05T08:54:29.000Z" itemprop="datePublished">三月 5 2016</time>
@@ -86,8 +88,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/05/一个处理location-search的小方法/">一个处理location.search的小方法</a>
+    <h1 class="article-title" itemprop="name">
+      一个处理location.search的小方法
     </h1>
   
 
@@ -121,230 +123,26 @@
     </footer>
   </div>
   
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/02/Git&Github 团队协作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Git&amp;Github 团队协作</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-  
-    <article id="post-Git&amp;Github 团队协作" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/02/Git&Github 团队协作/" class="article-date">
-  <time datetime="2015-08-02T08:56:53.000Z" itemprop="datePublished">八月 2 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/02/Git&Github 团队协作/">Git&amp;Github 团队协作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Git不用我介绍了，最近实习在做一个开源项目，托管在Github上，<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/08/02/Git&Github 团队协作/#more">阅读全文</a>
-          </p>
-        
-      
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://zhujun24.github.io/2015/08/02/Git&Github 团队协作/" data-id="cilf10lf6001rlcw41r0zxv8l" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://zhujun24.github.io/2015/08/02/Git&Github 团队协作/#disqus_thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool/">Tool</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS3-Transition值为Auto的情况" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/02/CSS3-Transition值为Auto的情况/" class="article-date">
-  <time datetime="2015-08-02T03:31:34.000Z" itemprop="datePublished">八月 2 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/02/CSS3-Transition值为Auto的情况/">CSS3 Transition值为Auto的情况</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>实习了快一个月了，一个人在外还是有些忙的，上个月也没写博客了，最近跟着师兄做一个开源的项目<a href="http://ant.design/">Ant Design</a>，在<a href="https://github.com/ant-design/ant-design">Github</a>上开源了。虽说是跟着做，实际就是打打杂，写两个基本简单的组件。写之前也是简单学习了React这个现在来看火的发烫的前端库(or框架？)，网上有文档也有教程，跟着把<a href="https://github.com/zhujun24/learn-react">DEMO</a>都写了一遍，虚拟DOM真神奇，就像去年这个时候认识AngularJS一样，给你颠覆的感觉，不过感觉的程度不及AngularJS。</p>
-<p>好像说了不少和CSS3无关的东西，来了。<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/08/02/CSS3-Transition值为Auto的情况/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://zhujun24.github.io/2015/08/02/CSS3-Transition值为Auto的情况/" data-id="cilf10lfg0027lcw4d77db1t7" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://zhujun24.github.io/2015/08/02/CSS3-Transition值为Auto的情况/#disqus_thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/">Front-End</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS浮动" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/09/CSS浮动/" class="article-date">
-  <time datetime="2015-06-09T03:07:27.000Z" itemprop="datePublished">六月 9 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/09/CSS浮动/">CSS浮动</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近被浮动小小的坑了一下，折腾了挺久的父元素高度还没撑开。</p>
-<p>浮动Float是CSS样式中的定位属性，用于设置标签对象(如：&lt;div&gt;标签盒子、&lt;span&gt;标签、&lt;a&gt;标签、&lt;em&gt;标签等html标签)的浮动布局，浮动也就是我们所说标签对象浮动居左靠左(float:left)和浮动居右靠右(float:right)<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/06/09/CSS浮动/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://zhujun24.github.io/2015/06/09/CSS浮动/" data-id="cilf10lfc001zlcw476njg61f" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://zhujun24.github.io/2015/06/09/CSS浮动/#disqus_thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/">Front-End</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS优先级" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/03/CSS优先级/" class="article-date">
-  <time datetime="2015-06-03T03:24:44.000Z" itemprop="datePublished">六月 3 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/03/CSS优先级/">CSS优先级</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近一段时间比较闲，没有多少课，没有多少考试，也没有多少项目，有空逛逛微博逛逛知乎，看看大牛们的状态，还有互联网上的各种撕逼各种黑。看到大牛们在微博、知乎和Github上的文章，通常文章的一部分还能懂点，一部分就要好好理解消化一下，再有一部分就要查查这个名词是什么玩意儿，这个概念又是什么玩意儿，摩擦啊，发现自己很low啊，整个人都 not ok 了。</p>
-<p>既然遇到不懂的，那就得去查阅资料，看看文档(此处装个X)，CSS优先级以前只是模糊的懂一些，看了文档之后会了解的更深刻一些。<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/06/03/CSS优先级/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://zhujun24.github.io/2015/06/03/CSS优先级/" data-id="cilf10lfd0023lcw4ke1k9ppf" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://zhujun24.github.io/2015/06/03/CSS优先级/#disqus_thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/">Front-End</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-    </nav>
-  
+  </section>
 </section>
         
           <aside id="sidebar">
@@ -466,11 +264,13 @@
 <script>
   var disqus_shortname = 'zhujunhexoblog';
   
+  var disqus_url = 'http://zhujun24.github.io/2016/03/05/一个处理location-search的小方法/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
