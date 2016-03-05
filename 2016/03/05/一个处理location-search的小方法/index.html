@@ -5,19 +5,16 @@
   
   <title>一个处理location.search的小方法 | 记录&amp;分享</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 cookie 和 localstorage 的情况下,可以用 location.search 来存储
-由于 location 是 window 下的,所以获取 location.search 可以直接获取,这个值的第一个">
+  <meta name="description" content="最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 cookie 和 localstorage 的情况下,可以用 location.search 来存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个处理location.search的小方法">
 <meta property="og:url" content="http://zhujun24.github.io/2016/03/05/一个处理location-search的小方法/index.html">
 <meta property="og:site_name" content="记录&分享">
-<meta property="og:description" content="最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 cookie 和 localstorage 的情况下,可以用 location.search 来存储
-由于 location 是 window 下的,所以获取 location.search 可以直接获取,这个值的第一个">
-<meta property="og:updated_time" content="2016-03-05T11:07:34.000Z">
+<meta property="og:description" content="最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 cookie 和 localstorage 的情况下,可以用 location.search 来存储">
+<meta property="og:updated_time" content="2016-03-05T11:39:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个处理location.search的小方法">
-<meta name="twitter:description" content="最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 cookie 和 localstorage 的情况下,可以用 location.search 来存储
-由于 location 是 window 下的,所以获取 location.search 可以直接获取,这个值的第一个">
+<meta name="twitter:description" content="最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 cookie 和 localstorage 的情况下,可以用 location.search 来存储">
   
   
     <link href="/favicon.ico" rel="icon" type="image/x-ico">
@@ -97,8 +94,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 <code>cookie</code> 和 <code>localstorage</code> 的情况下,可以用 <code>location.search</code> 来存储</p>
-<p>由于 <code>location</code> 是 <code>window</code> 下的,所以获取 <code>location.search</code> 可以直接获取,这个值的第一个字符是 <code>&#39;?&#39;</code> ,里面的 <code>key-value</code> 是用 <code>key=value</code> 来表示, <code>key-value</code> 与 <code>key-value</code> 之间用’&amp;’隔开,所以我们去掉第一个字符 <code>&#39;?&#39;</code> 并用 <code>&#39;&amp;&#39;</code> 分割这个值,得到元素是字符串形式的 <code>key=value</code> 的数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>).split(<span class="string">'&amp;'</span>);</span><br></pre></td></tr></table></figure></p>
+        <p>最近在写公司的一个类似 AJAX 搜索页面的时候,在点击搜索的时候,会跳转到对应的页面,当返回,也就是点击浏览器的返回按钮时,还显示之前的页面,也就是要保存搜索的关键词,在不使用 <code>cookie</code> 和 <code>localstorage</code> 的情况下,可以用 <code>location.search</code> 来存储<br><a id="more"></a><br>由于 <code>location</code> 是 <code>window</code> 下的,所以获取 <code>location.search</code> 可以直接获取,这个值的第一个字符是 <code>&#39;?&#39;</code> ,里面的 <code>key-value</code> 是用 <code>key=value</code> 来表示, <code>key-value</code> 与 <code>key-value</code> 之间用’&amp;’隔开,所以我们去掉第一个字符 <code>&#39;?&#39;</code> 并用 <code>&#39;&amp;&#39;</code> 分割这个值,得到元素是字符串形式的 <code>key=value</code> 的数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>).split(<span class="string">'&amp;'</span>);</span><br></pre></td></tr></table></figure></p>
 <p>循环处理分割后得到的数组,每个元素理论上应该是形如 <code>key=value</code> 的字符串,我们再把每个元素用 <code>&#39;=&#39;</code> 分隔开,第一个元素是 <code>key</code> ,第二个元素是 <code>value</code> ,我们可以得到一个包含所有 <code>key=value</code> 的对象,暂且称之为 <code>parms</code> 对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; query.length; i++) &#123;</span><br><span class="line">  <span class="keyword">var</span> pos = query[i].split(<span class="string">'='</span>);</span><br><span class="line">  <span class="keyword">if</span> (pos[<span class="number">0</span>]) &#123;</span><br><span class="line">    parms[pos[<span class="number">0</span>]] = pos[<span class="number">1</span>] ? pos[<span class="number">1</span>] : <span class="string">''</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>接下来处理传进来的参数,如果没有则直接返回上一步得到的 <code>parms</code> 对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!args) &#123;</span><br><span class="line">  <span class="keyword">return</span> parms;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>如果参数存在,则枚举这个对象,如果这个对象的属性在上一步得到的 <code>parms</code> 对象中存在,则更新该属性,否则添加该属性并赋值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> argKey <span class="keyword">in</span> args) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> parmskey <span class="keyword">in</span> parms) &#123;</span><br><span class="line">    <span class="keyword">if</span> (argKey === parmskey) &#123;</span><br><span class="line">      parms[parmskey] = args[parmskey];</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  parms[argKey] = args[argKey];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -110,7 +106,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://zhujun24.github.io/2016/03/05/一个处理location-search的小方法/" data-id="cilf10lei0010lcw4hg358a0q" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://zhujun24.github.io/2016/03/05/一个处理location-search的小方法/" data-id="cilf25cn10010p6w4nxiogw7m" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
