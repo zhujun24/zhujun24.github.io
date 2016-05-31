@@ -18,7 +18,7 @@
 每一个URI代表一种资源
 客户">
 <meta property="og:image" content="http://zhujun24.github.io/img/plus.jpg">
-<meta property="og:updated_time" content="2015-03-20T01:51:40.000Z">
+<meta property="og:updated_time" content="2016-05-31T07:28:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Slim轻型PHP框架写RESTful APIs">
 <meta name="twitter:description" content="寒假和一同学合作写个网站，他用AngularJS构建前端，我用PHP写RESTful的数据接口，撸到最后也有1000行了，其实我也并不太理解RESTful，看了阮一峰介绍RESTful的博客，简单的说，RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。在那篇博客的结尾阮一峰是这样总结的：
@@ -110,7 +110,7 @@
 <li>客户端和服务器之间，传递这种资源的某种表现层</li>
 <li>客户端通过四个HTTP动词，对服务器端资源进行操作，实现表现层状态转化</li>
 </ul>
-<p>我的理解仅仅在最后一点<br><a id="more"></a><br>切入正题Slim，一个PHP的轻型框架，这里是<a href="http://minimee.org/php/slim" target="_blank" rel="external">Slim中文文档</a>，还有<a href="http://slimframework.com/" target="_blank" rel="external">Slim官网</a>，中文文档里介绍的用Composer进行安装我是没有试过，手动安装也很方便，去<a href="https://github.com/slimphp/Slim" target="_blank" rel="external">Slim的Github</a>上把项目clone下来就OK了。再把项目文件复制到服务器下就可以在浏览器里打开对应的路径就可以看到Slim的欢迎页面。</p>
+<p>我的理解仅仅在最后一点<br><a id="more"></a><br>切入正题Slim，一个PHP的轻型框架，这里是<a href="http://www.slimphp.net/" target="_blank" rel="external">Slim中文文档</a>，还有<a href="http://slimframework.com/" target="_blank" rel="external">Slim官网</a>，中文文档里介绍的用Composer进行安装我是没有试过，手动安装也很方便，去<a href="https://github.com/slimphp/Slim" target="_blank" rel="external">Slim的Github</a>上把项目clone下来就OK了。再把项目文件复制到服务器下就可以在浏览器里打开对应的路径就可以看到Slim的欢迎页面。</p>
 <p>Slim要求PHP版本大于等于5.3，如果你需要对cookies进行加密，则还需要mcrypt拓展。我们还需要URL重写，所以要启用Apache的mod_rewrite模块，最后配一个虚拟主机，再改个host就可以了。</p>
 <p>主要的工作是在项目根目录下的index.php文件里进行的，第一步需要引入Slim框架<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一步：引用Slim框架</span></span><br><span class="line"><span class="comment">//首先，需要在你的index.php中引入Slim框架的依赖，根据实际情况，你可能得调整下文件的路径</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'Slim/Slim.php'</span>;</span><br><span class="line">\Slim\Slim::registerAutoloader();</span><br></pre></td></tr></table></figure></p>
 <p>第二步：初始化Slim框架<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第二步：初始化Slim框架</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$app</span> = <span class="keyword">new</span> \Slim\Slim();</span><br></pre></td></tr></table></figure></p>
@@ -130,7 +130,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://zhujun24.github.io/2015/03/19/用Slim轻型PHP框架写RESTful APIs/" data-id="cilf2p7dn000cqhw4q7w2hxlk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://zhujun24.github.io/2015/03/19/用Slim轻型PHP框架写RESTful APIs/" data-id="ciov4i7ct000cv7w46nkw3q39" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
